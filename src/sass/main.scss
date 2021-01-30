@@ -1,0 +1,178 @@
+@import "components/base";
+
+// Bootstrap SCSS
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/root";
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/images";
+@import "node_modules/bootstrap/scss/code";
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/tables";
+@import "node_modules/bootstrap/scss/forms";
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/transitions";
+@import "node_modules/bootstrap/scss/dropdown";
+@import "node_modules/bootstrap/scss/button-group";
+@import "node_modules/bootstrap/scss/input-group";
+@import "node_modules/bootstrap/scss/custom-forms";
+@import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/navbar";
+@import "node_modules/bootstrap/scss/card";
+@import "node_modules/bootstrap/scss/breadcrumb";
+@import "node_modules/bootstrap/scss/pagination";
+@import "node_modules/bootstrap/scss/badge";
+@import "node_modules/bootstrap/scss/jumbotron";
+@import "node_modules/bootstrap/scss/alert";
+@import "node_modules/bootstrap/scss/progress";
+@import "node_modules/bootstrap/scss/media";
+@import "node_modules/bootstrap/scss/list-group";
+@import "node_modules/bootstrap/scss/close";
+@import "node_modules/bootstrap/scss/toasts";
+@import "node_modules/bootstrap/scss/modal";
+@import "node_modules/bootstrap/scss/tooltip";
+@import "node_modules/bootstrap/scss/popover";
+@import "node_modules/bootstrap/scss/carousel";
+@import "node_modules/bootstrap/scss/spinners";
+@import "node_modules/bootstrap/scss/utilities";
+@import "node_modules/bootstrap/scss/print";
+
+//////////////////////////////
+//////// Global Styles ///////
+//////////////////////////////
+
+.player-container {
+ height: 100vh;
+}
+
+.player-wrapper {
+  background: #444;
+  box-shadow: 0 0 20px 0 #000a;
+  color: white;
+}
+
+.audio-player {
+  height: 50px;
+  width: 100%;
+
+  color: white;
+  font-size: 0.75em;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-rows: 6px auto;
+  .timeline {
+    background: white;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 2px 10px 0 #0008;
+    .progress {
+      background: coral;
+      width: 0%;
+      height: 100%;
+      transition: 0.25s;
+    }
+  }
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 20px;
+
+    > * {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .toggle-play {
+      &.play {
+        cursor: pointer;
+        position: relative;
+        left: 0;
+        height: 0;
+        width: 0;
+        border: 7px solid #0000;
+        border-left: 13px solid white;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      &.pause {
+        height: 15px;
+        width: 20px;
+        cursor: pointer;
+        position: relative;
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 0px;
+          background: white;
+          content: "";
+          height: 15px;
+          width: 3px;
+        }
+        &:after {
+          position: absolute;
+          top: 0;
+          right: 8px;
+          background: white;
+          content: "";
+          height: 15px;
+          width: 3px;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    .time {
+      display: flex;
+
+      > * {
+        padding: 2px;
+      }
+    }
+    .volume-container {
+      cursor: pointer;
+      .volume-button {
+        height: 26px;
+        display: flex;
+        align-items: center;
+        .volume {
+          transform: scale(0.7);
+          height: 20px;
+          width: 20px;
+          background: white;
+        }
+      }
+
+      position: relative;
+      z-index: 2;
+      .volume-slider {
+        position: absolute;
+        left: -3px;
+        top: 15px;
+        z-index: -1;
+        width: 0;
+        height: 15px;
+        background: white;
+        box-shadow: 0 0 20px #000a;
+        transition: 0.25s;
+        .volume-percentage {
+          background: coral;
+          height: 100%;
+          width: 75%;
+        }
+      }
+      &:hover {
+        .volume-slider {
+          left: -123px;
+          width: 120px;
+        }
+      }
+    }
+  }
+}
